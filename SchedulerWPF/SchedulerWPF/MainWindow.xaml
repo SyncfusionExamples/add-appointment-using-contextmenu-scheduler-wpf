@@ -1,0 +1,63 @@
+﻿<Window x:Class="SchedulerWPF.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:SchedulerWPF"
+        xmlns:syncfusion="http://schemas.syncfusion.com/wpf"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    <Grid>
+        <syncfusion:SfScheduler x:Name="Schedule" 
+                ViewType="Week">
+            <syncfusion:SfScheduler.CellContextMenu>
+                <ContextMenu>
+                    <MenuItem 
+                        
+        Command="{Binding Source={x:Static Member=syncfusion:SchedulerCommands.Add}}" CommandParameter ="{Binding}" CommandTarget="{Binding ElementName=Schedule}" Header="Add">
+                        <MenuItem.Icon>
+                            <Path x:Name="AddNew" Data="{StaticResource addNew}"
+                Fill="#FF5A5A5B" 
+                Width="16"
+                Height="16"
+                HorizontalAlignment="Center"
+                VerticalAlignment="Center"
+                Stretch="Fill" />
+                        </MenuItem.Icon>
+                    </MenuItem>
+
+                </ContextMenu>
+            </syncfusion:SfScheduler.CellContextMenu>
+            <syncfusion:SfScheduler.AppointmentContextMenu>
+                <ContextMenu>
+                    <MenuItem Command="{Binding Source={x:Static Member=syncfusion:SchedulerCommands.Edit}}"
+    CommandParameter ="{Binding}" CommandTarget="{Binding ElementName=Schedule}"
+    Header="Edit">
+                        <MenuItem.Icon>
+                            <Path x:Name="Edit" Data="{StaticResource edit}"
+            Fill="#FF5A5A5B" 
+                Width="16"
+                Height="16"
+                HorizontalAlignment="Center"
+                VerticalAlignment="Center"
+                Stretch="Fill"/>
+                        </MenuItem.Icon>
+                    </MenuItem>
+                    <MenuItem Command="{Binding Source={x:Static Member=syncfusion:SchedulerCommands.Delete}}"
+CommandParameter ="{Binding}"
+Header="Delete">
+                        <MenuItem.Icon>
+                            <Path x:Name="Delete" Data="{StaticResource delete}"
+               Fill="#FF5A5A5B" 
+                Width="16"
+                Height="16"
+                HorizontalAlignment="Center"
+                VerticalAlignment="Center"
+                Stretch="Fill"/>
+                        </MenuItem.Icon>
+                    </MenuItem>
+                </ContextMenu>
+            </syncfusion:SfScheduler.AppointmentContextMenu>
+        </syncfusion:SfScheduler>
+    </Grid>
+</Window>
